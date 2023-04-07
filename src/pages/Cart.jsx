@@ -2,7 +2,6 @@ import React from "react";
 import { Context } from "../components/ContextProvider";
 import { useContext } from "react";
 import {
-  Box,
   Card,
   CardBody,
   CardFooter,
@@ -73,14 +72,19 @@ const Cart = () => {
           );
         })
       ) : (
-        <Heading as={"h1"} sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontSize: "clamp(1.5rem, 5vw, 3rem)",
-          color: "#2e507772",
-      }}>No Items</Heading>
+        <Heading
+          as={"h1"}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontSize: "clamp(1.5rem, 5vw, 3rem)",
+            color: "#2e507772",
+          }}
+        >
+          No Items
+        </Heading>
       )}
     </VStack>
   );

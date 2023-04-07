@@ -1,9 +1,12 @@
-import React from "react";
-const Context = React.createContext();
+import React, { useState, useEffect, createContext } from "react";
+
+const Context = createContext();
+
 const ContextProvider = (props) => {
-  const [allProducts, setAllProducts] = React.useState([]);
-  const [favourites, setFavourites] = React.useState([]);
-  const [cart, setCart] = React.useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+  const [cart, setCart] = useState([]);
+
   function getAllProducts() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
@@ -13,30 +16,27 @@ const ContextProvider = (props) => {
         );
       });
   }
-  React.useEffect(() => {
+
+  useEffect(() => {
     getAllProducts();
   }, []);
+
   function handleFavourites(id) {
-    const newFavs = allProducts.map((product) => {
-      if (product.id === id) {
-        return { ...product, isFavourite: !product.isFavourite };
-      }
-      return product;
-    });
+    const newFavs = allProducts.map((product) =>
+      product.id === id
+        ? { ...product, isFavourite: !product.isFavourite }
+        : product
+    );
     setAllProducts(newFavs);
-    setFavourites([
-      ...newFavs.filter((product) => product.isFavourite === true),
-    ]);
+    setFavourites(newFavs.filter((product) => product.isFavourite === true));
   }
+
   function handleCart(id) {
-    const newCart = allProducts.map((product) => {
-      if (product.id === id) {
-        return { ...product, inCart: !product.inCart };
-      }
-      return product;
-    });
+    const newCart = allProducts.map((product) =>
+      product.id === id ? { ...product, inCart: !product.inCart } : product
+    );
     setAllProducts(newCart);
-    setCart([...newCart.filter((item) => item.inCart === true)]);
+    setCart(newCart.filter((item) => item.inCart === true));
   }
 
   return (

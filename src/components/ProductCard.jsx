@@ -1,5 +1,4 @@
 import {
-  Button,
   ButtonGroup,
   Card,
   CardBody,
@@ -8,7 +7,6 @@ import {
   Heading,
   Image,
   Stack,
-  Text,
   Tooltip,
 } from "@chakra-ui/react";
 import React from "react";

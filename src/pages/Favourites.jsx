@@ -65,14 +65,19 @@ const Favourites = () => {
             );
           })
       ) : (
-        <Heading as={"h1"} sx={{
+        <Heading
+          as={"h1"}
+          sx={{
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             fontSize: "clamp(1.5rem, 5vw, 3rem)",
             color: "#2e507772",
-        }}>No Favourites</Heading>
+          }}
+        >
+          No Favourites
+        </Heading>
       )}
     </VStack>
   );
