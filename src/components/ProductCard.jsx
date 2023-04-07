@@ -15,20 +15,22 @@ import React from "react";
 import { Context } from "./ContextProvider";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-const ProductCard = ({ imgSrc, title, price, id }) => {
-  const { addToFavourite } = useContext(Context);
+const ProductCard = ({ imgSrc, title, price, id, isFavourite, inCart }) => {
+  const { handleFavourites, handleCart } = useContext(Context);
   return (
     <Card
       gap={10}
       sx={{
-        border: "2px solid #3f383810",
+        border: "2px solid #2e507729",
         borderRadius: "10px",
         transition: "all 0.3s ease-in-out",
         ":hover": {
-          border: "2px solid #00000036",
+          boxShadow: "2px 2px 10px #2e507799",
         },
       }}
+      h={"100%"}
       p="6"
+      justifyContent={"space-between"}
     >
       <CardBody>
         <Link to={`/${id}`}>
@@ -47,19 +49,17 @@ const ProductCard = ({ imgSrc, title, price, id }) => {
             <Tooltip
               maxWidth={150}
               hasArrow
-              bg="tomato"
+              bg="#2E5077"
+              color="white"
               borderRadius={5}
-              p={4}
+              p={6}
               label={title}
-              placement="right"
+              placement="top"
               aria-label="A tooltip"
             >
               {title.slice(0, 20)}
             </Tooltip>
           </Heading>
-          <Text color="blue.600" fontSize="2xl">
-            ${price}
-          </Text>
         </Stack>
       </CardBody>
       <Divider />
@@ -72,13 +72,19 @@ const ProductCard = ({ imgSrc, title, price, id }) => {
         >
           <button
             onClick={() => {
-              addToFavourite(id);
+              handleFavourites(id);
             }}
           >
-            <span className="button_top"> Favourite</span>
+            <span className="button_top">
+              {isFavourite ? "Favourited" : "Favourite"}
+            </span>
           </button>
-          <button onClick={() => {}}>
-            <span className="button_top"> Add</span>
+          <button
+            onClick={() => {
+              handleCart(id);
+            }}
+          >
+            <span className="button_top"> {inCart ? "Remove" : "Add"}</span>
           </button>
         </ButtonGroup>
       </CardFooter>

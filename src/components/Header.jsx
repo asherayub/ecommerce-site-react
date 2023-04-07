@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Grid
-      bg={"tomato"}
-      p={"10px"}
+      bg={"#2E5077"}
+      color={"white"}
+      p={"20px 10px"}
       gridTemplateColumns={"1fr 1fr"}
       alignItems={"center"}
       position={"fixed"}

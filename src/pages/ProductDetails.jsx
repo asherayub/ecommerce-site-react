@@ -14,7 +14,7 @@ const ProductDetails = () => {
         <span className="button_top">Go Back</span>
       </button>
       <Flex
-        mt={70}
+        mt={90}
         alignItems={"center"}
         justifyContent={"space-evenly"}
         sx={{
