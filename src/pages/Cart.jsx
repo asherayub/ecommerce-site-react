@@ -59,6 +59,14 @@ const Cart = () => {
                     <Heading size="md">{cart.title}</Heading>
 
                     <Text py="2">{cart.description}</Text>
+                    <Heading
+                      as={"h3"}
+                      bg={"yellow"}
+                      display={"inline-block"}
+                      p={2}
+                    >
+                      Price: ${cart.price}
+                    </Heading>
                   </CardBody>
 
                   <CardFooter>

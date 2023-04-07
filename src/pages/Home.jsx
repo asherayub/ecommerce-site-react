@@ -15,7 +15,7 @@ const Home = () => {
     >
       {allProducts.map((product) => {
         return (
-          <Box key={product.id} h={"100%"}>
+          <Box key={product.id} h={"100%"} >
             <ProductCard
               imgSrc={product.image}
               title={product.title}

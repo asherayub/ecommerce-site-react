@@ -9,11 +9,13 @@ import {
   Stack,
   Tooltip,
 } from "@chakra-ui/react";
+import { AiFillHeart } from "react-icons/ai";
+import { BsCartPlusFill } from "react-icons/bs";
 import React from "react";
 import { Context } from "./ContextProvider";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-const ProductCard = ({ imgSrc, title, price, id, isFavourite, inCart }) => {
+const ProductCard = ({ imgSrc, title, id, isFavourite, inCart }) => {
   const { handleFavourites, handleCart } = useContext(Context);
   return (
     <Card
@@ -74,15 +76,28 @@ const ProductCard = ({ imgSrc, title, price, id, isFavourite, inCart }) => {
             }}
           >
             <span className="button_top">
-              {isFavourite ? "Favourited" : "Favourite"}
+              Favourite
+              {!isFavourite ? (
+                <AiFillHeart fontSize={18} />
+              ) : (
+                <AiFillHeart fontSize={18} fill="red" />
+              )}
             </span>
           </button>
           <button
             onClick={() => {
               handleCart(id);
             }}
-          > 
-            <span className="button_top"> {inCart ? "Remove" : "Add"}</span>
+          >
+            <span className="button_top">
+              {" "}
+              Add
+              {inCart ? (
+                <BsCartPlusFill fontSize={18} fill="green" bg={"green"} />
+              ) : (
+                <BsCartPlusFill fontSize={18} />
+              )}
+            </span>
           </button>
         </ButtonGroup>
       </CardFooter>
