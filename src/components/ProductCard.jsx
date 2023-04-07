@@ -65,6 +65,7 @@ const ProductCard = ({ imgSrc, title, id, isFavourite, inCart }) => {
       <Divider />
       <CardFooter>
         <ButtonGroup
+        mt={30}
           spacing="2"
           alignItems={"center"}
           justifyContent={"space-between"}
