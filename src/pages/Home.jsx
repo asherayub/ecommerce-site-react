@@ -4,12 +4,18 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
-  const context = useContext(Context);
+  const { allProducts } = useContext(Context);
   return (
-    <SimpleGrid mt={70} p={10} minChildWidth="200px" spacing="40px" placeItems={"center"}>
-      {context.map((product) => {
+    <SimpleGrid
+      mt={70}
+      p={10}
+      minChildWidth="200px"
+      spacing="40px"
+      placeItems={"center"}
+    >
+      {allProducts.map((product) => {
         return (
-          <Box>
+          <Box key={product.id} >
             <ProductCard
               imgSrc={product.image}
               title={product.title}

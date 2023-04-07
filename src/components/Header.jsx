@@ -16,7 +16,9 @@ const Header = () => {
       zIndex={"100"}
     >
       <Box>
-        <Heading as={"h1"}>StoreIt</Heading>
+        <Heading as={"h1"}>
+          <Link to="/">StoreIt</Link>
+        </Heading>
       </Box>
       <HStack justifySelf={"end"}>
         <Heading sx={{ textDecoration: "none" }} as={"h3"} mr={"10px"}>
