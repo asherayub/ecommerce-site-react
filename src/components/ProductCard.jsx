@@ -81,7 +81,7 @@ const ProductCard = ({ imgSrc, title, price, id, isFavourite, inCart }) => {
             onClick={() => {
               handleCart(id);
             }}
-          >
+          > 
             <span className="button_top"> {inCart ? "Remove" : "Add"}</span>
           </button>
         </ButtonGroup>
