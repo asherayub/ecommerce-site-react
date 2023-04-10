@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../components/ContextProvider";
-import { Box, Grid, Flex, Image, Heading, Text } from "@chakra-ui/react";
+import { Box, Grid, Flex, Image, Heading, Text, Button } from "@chakra-ui/react";
 import { useParams, useNavigate } from "react-router-dom";
-import {BiArrowBack} from "react-icons/bi";
+import { BiArrowBack } from "react-icons/bi";
 
 const ProductDetails = () => {
   const { allProducts } = useContext(Context);
@@ -18,38 +18,18 @@ const ProductDetails = () => {
       alignItems={"center"}
       justifyItems={"start"}
     >
-      <button onClick={() => navigate("/")}>
-        <span className="button_top"><BiArrowBack /></span>
-      </button>
-      <Flex
-        alignItems={"center"}
-        justifyContent={"space-evenly"}
-        sx={{
-          "@media (max-width: 768px)": {
-            flexDirection: "column",
-          },
-        }}
-      >
-        <Box
-          w={"50%"}
-          h={"100%"}
-          sx={{
-            "@media (max-width: 768px)": {
-              width: "100%",
-            },
-          }}
-        >
-          <Heading marginBlock={10} fontSize={"clamp(1.5rem, 4vw, 3rem)"}>
-            {product.title}
-          </Heading>
-          <Text marginBlock={10} fontSize={"clamp(.8rem, 3vw, 1.3rem)"}>
-            {product.description}
-          </Text>
-          <Heading marginBlock={10} as={"h3"} bg={"yellow"} w={"max-content"} p={2} ml={"auto"}>
-            Price: ${product.price}
-          </Heading>
+      <Button onClick={() => navigate("/")}>
+        <span className="button_top">
+          <BiArrowBack />
+        </span>
+      </Button>
+      <Flex wrap={"wrap-reverse"} alignItems={"center"}>
+        <Box w={"50%"} h={"100%"} flex={"1 0 0"}>
+          <Heading marginBlock={10}>{product.title}</Heading>
+          <Text marginBlock={10}>{product.description}</Text>
+          <Heading>Price: ${product.price}</Heading>
         </Box>
-        <Image src={product.image} alt={product.title} w={300} />
+        <Image src={product.image} alt={product.title} w={300} h={300} objectFit={'contain'}  />
       </Flex>
     </Grid>
   );

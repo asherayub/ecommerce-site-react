@@ -3,11 +3,12 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Divider,
   Heading,
   Image,
   Stack,
+  Text,
   Tooltip,
+  useToast,
 } from "@chakra-ui/react";
 import {
   AiFillHeart,
@@ -24,20 +25,9 @@ import useHover from "../hooks/useHover";
 const ProductCard = ({ imgSrc, title, id, isFavourite, inCart }) => {
   const { handleFavourites, handleCart } = useContext(Context);
   const [hoverRef, isHovered] = useHover();
+  const toast = useToast();
   return (
-    <Card
-      sx={{
-        border: "2px solid #2e507729",
-        transition: "all 0.3s ease-in-out",
-        ":hover": {
-          boxShadow: "2px 2px 10px #2e50773e",
-        },
-      }}
-      h={"345"}
-      p="6"
-      justifyContent={"space-between"}
-      ref={hoverRef}
-    >
+    <Card h={400} p="6" justifyContent={"space-between"} ref={hoverRef}>
       <CardBody mx={"auto"} textAlign={"center"}>
         <Link to={`/${id}`}>
           <Image
@@ -51,21 +41,17 @@ const ProductCard = ({ imgSrc, title, id, isFavourite, inCart }) => {
           />
         </Link>
         <Stack mt="6" spacing="3">
-          <Heading as={"h4"}>
+          <Text as={"p"} fontWeight={"bold"}>
             <Tooltip
-              maxWidth={150}
               hasArrow
-              bg="#2E5077"
-              color="white"
-              borderRadius={5}
-              p={6}
               label={title}
               placement="top"
               aria-label="A tooltip"
+              bg={"blue.600"}
             >
-              {title.slice(0, 50)}
+              {title.slice(0, 20)}
             </Tooltip>
-          </Heading>
+          </Text>
         </Stack>
       </CardBody>
       <CardFooter>
@@ -79,24 +65,50 @@ const ProductCard = ({ imgSrc, title, id, isFavourite, inCart }) => {
             <button
               onClick={() => {
                 handleFavourites(id);
+                !isFavourite
+                  ? toast({
+                      title: "Added to Favorites",
+                      status: "info",
+                      duration: 2000,
+                      isClosable: true,
+                    })
+                  : toast({
+                      title: "Removed from Favourites",
+                      status: "info",
+                      duration: 2000,
+                      isClosable: true,
+                    });
               }}
             >
               <span className="button_top">
                 {!isFavourite ? (
                   <AiOutlineHeart fontSize={24} />
                 ) : (
-                  <AiFillHeart fontSize={24} fill="red" />
+                  <AiFillHeart fontSize={24} fill="#E53E3E" />
                 )}
               </span>
             </button>
             <button
               onClick={() => {
                 handleCart(id);
+                !inCart
+                  ? toast({
+                      title: "Added to Cart",
+                      status: "info",
+                      duration: 2000,
+                      isClosable: true,
+                    })
+                  : toast({
+                      title: "Removed from Cart",
+                      status: "info",
+                      duration: 2000,
+                      isClosable: true,
+                    });
               }}
             >
               <span className="button_top">
                 {inCart ? (
-                  <BsCartPlusFill fontSize={24} fill="green" bg={"green"} />
+                  <BsCartPlusFill fontSize={24} fill="green" bg={"#38A169"} />
                 ) : (
                   <BsCartPlus fontSize={24} />
                 )}

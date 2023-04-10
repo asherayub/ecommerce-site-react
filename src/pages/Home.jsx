@@ -4,10 +4,10 @@ import {
   Box,
   Container,
   Heading,
-  SimpleGrid,
   Flex,
   Text,
-  Divider,
+  Grid,
+  Highlight,
 } from "@chakra-ui/react";
 import ProductCard from "../components/ProductCard";
 import { AiOutlineArrowDown } from "react-icons/ai";
@@ -15,7 +15,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 const Home = () => {
   const { allProducts } = useContext(Context);
   return (
-    <Container>
+    <Container maxW={"container.lg"}>
       <Flex
         w={"100%"}
         h={"100vh"}
@@ -24,24 +24,45 @@ const Home = () => {
         textAlign={"center"}
         justifyContent={"center"}
         alignItems={"center"}
-        lineHeight={1.5}
+        lineHeight={2}
       >
-        <Heading as={"h1"} fontSize={"clamp(2rem, 4vw, 3rem)"}>
-          Shop from comfort of your Home
+        <Heading as={"h1"} mb={2}>
+          Shop from Home
         </Heading>
-        <Heading as={"h3"}>With FREE Delivery All Around The World.</Heading>
-        <Divider mt={10} mb={10} />
+
+        <Heading as={"h3"} fontSize={"20"}>
+          With
+          <Text
+            as={"span"}
+            display={"inline-block"}
+            px={2}
+            py={4}
+            mx={1}
+            pos={"relative"}
+          >
+            {/* <Badge ml="1" bg="blue.100" position={"absolute"} right={0} top={0}>
+              Limited Time
+            </Badge> */}
+            <Highlight
+              query="Limited Time"
+              styles={{ px: "1", py: "1", bg: "orange.100" }}
+            >
+              FREE Delivery Limited Time
+            </Highlight>
+          </Text>
+          <br />
+          All Around The World.
+        </Heading>
         <Text>Scroll down to see products</Text>
         <Heading className="arrow-down">
           <AiOutlineArrowDown />
         </Heading>
       </Flex>
-      <SimpleGrid
-        mt={40}
-        p={10}
-        minChildWidth="200px"
-        spacing="40px"
-        placeItems={"center"}
+      <Grid
+        px={10}
+        py={0}
+        gap={5}
+        gridTemplateColumns={"repeat(auto-fill, minmax(200px, 1fr))"}
       >
         {allProducts.map((product) => {
           return (
@@ -57,7 +78,7 @@ const Home = () => {
             </Box>
           );
         })}
-      </SimpleGrid>
+      </Grid>
     </Container>
   );
 };

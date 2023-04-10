@@ -2,6 +2,7 @@ import React from "react";
 import { Context } from "../components/ContextProvider";
 import { useContext } from "react";
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
@@ -17,7 +18,12 @@ const Favourites = () => {
   const { favourites, handleFavourites } = useContext(Context);
 
   return (
-    <VStack spacing={50} mt={90} p={10}>
+    <VStack
+      spacing={50}
+      minH={"100vh"}
+      p={10}
+      mt={favourites.length > 0 ? 77 : 0}
+    >
       {favourites.length > 0 ? (
         favourites
           .filter((item) => item.isFavourite)
@@ -29,21 +35,11 @@ const Favourites = () => {
                 overflow="hidden"
                 variant="outline"
               >
-                <Flex
-                  justifyContent={"center"}
-                  gap={10}
-                  sx={{
-                    "@media (max-width: 768px)": {
-                      flexDirection: "column",
-                      alignItems: "center",
-                    },
-                  }}
-                >
+                <Flex justifyContent={"center"} gap={10} wrap={"wrap"} p={2}>
                   <Image
                     objectFit="contain"
                     src={fav.image}
                     alt={fav.title}
-                    borderRadius="lg"
                     width="200px"
                     height="200px"
                   />
@@ -57,7 +53,11 @@ const Favourites = () => {
 
                     <CardFooter>
                       <button onClick={() => handleFavourites(fav.id)}>
-                        <span className="button_top"><BsTrash /></span>
+                        <span className="button_top">
+                          <Button>
+                            <BsTrash />
+                          </Button>
+                        </span>
                       </button>
                     </CardFooter>
                   </Stack>

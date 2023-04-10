@@ -1,4 +1,4 @@
-import { Box, Grid, HStack, Heading } from "@chakra-ui/react";
+import { Box, Grid, HStack, Heading, Text } from "@chakra-ui/react";
 import { CiMenuBurger } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
 import React from "react";
@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <Grid
-      bg={"#2E5077"}
+      bg={"blue.600"}
       color={"white"}
       p={"20px 10px"}
       gridTemplateColumns={"1fr 1fr"}
@@ -44,27 +44,24 @@ const Header = () => {
           },
         }}
       >
-        <Heading
+        <Text
           onClick={() => setIsMenuOpen(false)}
           sx={{ textDecoration: "none" }}
-          as={"h3"}
         >
           <Link to="/">Home</Link>
-        </Heading>
-        <Heading
+        </Text>
+        <Text
           onClick={() => setIsMenuOpen(false)}
           sx={{ textDecoration: "none" }}
-          as={"h3"}
         >
           <Link to="/favourites">Favourites</Link>
-        </Heading>
-        <Heading
+        </Text>
+        <Text
           onClick={() => setIsMenuOpen(false)}
           sx={{ textDecoration: "none" }}
-          as={"h3"}
         >
           <Link to="/cart">Cart</Link>
-        </Heading>
+        </Text>
       </HStack>
       <Heading
         sx={{

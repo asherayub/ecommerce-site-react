@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, handleCart } = useContext(Context);
   return (
-    <VStack spacing={50} mt={90} p={10}>
+    <VStack spacing={50} p={10} minH={"100vh"}>
       {cart?.length > 0 && (
         <Flex w={"100%"} justifyContent={"flex-end"}>
           <Heading>
@@ -42,13 +42,10 @@ const Cart = () => {
             >
               <Flex
                 justifyContent={"space-between"}
+                alignItems={"center"}
                 gap={10}
-                sx={{
-                  "@media (max-width: 768px)": {
-                    flexDirection: "column",
-                    alignItems: "center",
-                  },
-                }}
+                wrap={"wrap"}
+                p={2}
               >
                 <Image
                   objectFit="contain"
@@ -66,7 +63,7 @@ const Cart = () => {
                     <Text py="2">{cart.description}</Text>
                     <Heading
                       as={"h3"}
-                      bg={"yellow"}
+                      bg={"yellow.200"}
                       display={"inline-block"}
                       p={2}
                     >
@@ -77,7 +74,9 @@ const Cart = () => {
                   <CardFooter>
                     <button onClick={() => handleCart(cart.id)}>
                       <span className="button_top">
-                        <BsTrash />
+                        <Button>
+                          <BsTrash />
+                        </Button>
                       </span>
                     </button>
                   </CardFooter>
