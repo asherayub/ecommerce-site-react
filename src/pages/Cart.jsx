@@ -11,7 +11,10 @@ import {
   Stack,
   Text,
   VStack,
+  Button,
 } from "@chakra-ui/react";
+import { BsTrash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, handleCart } = useContext(Context);
   return (
@@ -20,9 +23,11 @@ const Cart = () => {
         <Flex w={"100%"} justifyContent={"flex-end"}>
           <Heading>
             Total: $
-            {cart.reduce((total, item) => {
-              return total + item.price;
-            }, 0)}
+            {cart
+              .reduce((total, item) => {
+                return total + item.price;
+              }, 0)
+              .toFixed(2)}
           </Heading>
         </Flex>
       )}
@@ -71,7 +76,9 @@ const Cart = () => {
 
                   <CardFooter>
                     <button onClick={() => handleCart(cart.id)}>
-                      <span className="button_top">Remove Product</span>
+                      <span className="button_top">
+                        <BsTrash />
+                      </span>
                     </button>
                   </CardFooter>
                 </Stack>
@@ -91,7 +98,7 @@ const Cart = () => {
             color: "#2e507772",
           }}
         >
-          No Items
+          Empty
         </Heading>
       )}
     </VStack>

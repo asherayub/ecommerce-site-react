@@ -12,6 +12,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { BsTrash } from "react-icons/bs";
 const Favourites = () => {
   const { favourites, handleFavourites } = useContext(Context);
 
@@ -56,7 +57,7 @@ const Favourites = () => {
 
                     <CardFooter>
                       <button onClick={() => handleFavourites(fav.id)}>
-                        <span className="button_top">Remove Favourite</span>
+                        <span className="button_top"><BsTrash /></span>
                       </button>
                     </CardFooter>
                   </Stack>
@@ -76,7 +77,7 @@ const Favourites = () => {
             color: "#2e507772",
           }}
         >
-          No Favourites
+          Empty
         </Heading>
       )}
     </VStack>

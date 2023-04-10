@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../components/ContextProvider";
 import { Box, Grid, Flex, Image, Heading, Text } from "@chakra-ui/react";
 import { useParams, useNavigate } from "react-router-dom";
+import {BiArrowBack} from "react-icons/bi";
 
 const ProductDetails = () => {
   const { allProducts } = useContext(Context);
@@ -18,7 +19,7 @@ const ProductDetails = () => {
       justifyItems={"start"}
     >
       <button onClick={() => navigate("/")}>
-        <span className="button_top">Go Back</span>
+        <span className="button_top"><BiArrowBack /></span>
       </button>
       <Flex
         alignItems={"center"}

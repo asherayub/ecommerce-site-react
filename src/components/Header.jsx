@@ -36,8 +36,9 @@ const Header = () => {
             bottom: "0",
             width: "100%",
             height: "100vh",
-            backgroundColor: "#2e5077",
+            backdropFilter: "blur(10px)",
             padding: "10px 0",
+            backgroundColor: "#2e507799",
             boxShadow: "2px 2px 10px #2e507799",
             display: `${isMenuOpen ? "flex" : "none"}}`,
           },
@@ -55,14 +56,14 @@ const Header = () => {
           sx={{ textDecoration: "none" }}
           as={"h3"}
         >
-          <Link to="/cart">Cart</Link>
+          <Link to="/favourites">Favourites</Link>
         </Heading>
         <Heading
           onClick={() => setIsMenuOpen(false)}
           sx={{ textDecoration: "none" }}
           as={"h3"}
         >
-          <Link to="/favourites">Favourites</Link>
+          <Link to="/cart">Cart</Link>
         </Heading>
       </HStack>
       <Heading

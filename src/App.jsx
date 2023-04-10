@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
