@@ -4,10 +4,22 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { ContextProvider } from "./components/ContextProvider";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
+const theme = extendTheme({
+  fonts: {
+    heading: "Poppins",
+    body: "Poppins",
+  },
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      900: "#1a202c",
+    },
+  },
+});
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <Router>
       <ContextProvider>
         <App />
