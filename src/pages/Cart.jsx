@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, handleCart } = useContext(Context);
   return (
-    <VStack spacing={50} p={10} minH={"100vh"}>
+    <VStack spacing={50} p={10} minH={"100vh"} mt={cart.length > 0 ? 77 : 0}>
       {cart?.length > 0 && (
         <Flex w={"100%"} justifyContent={"flex-end"}>
           <Heading>
