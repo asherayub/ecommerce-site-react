@@ -72,13 +72,11 @@ const Cart = () => {
                   </CardBody>
 
                   <CardFooter>
-                    <button onClick={() => handleCart(cart.id)}>
+                    <Button onClick={() => handleCart(cart.id)}>
                       <span className="button_top">
-                        <Button>
-                          <BsTrash />
-                        </Button>
+                        <BsTrash />
                       </span>
-                    </button>
+                    </Button>
                   </CardFooter>
                 </Stack>
               </Flex>

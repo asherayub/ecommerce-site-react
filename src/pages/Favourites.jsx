@@ -16,7 +16,6 @@ import {
 import { BsTrash } from "react-icons/bs";
 const Favourites = () => {
   const { favourites, handleFavourites } = useContext(Context);
-
   return (
     <VStack
       spacing={50}
@@ -52,13 +51,11 @@ const Favourites = () => {
                     </CardBody>
 
                     <CardFooter>
-                      <button onClick={() => handleFavourites(fav.id)}>
+                      <Button onClick={() => handleFavourites(fav.id)}>
                         <span className="button_top">
-                          <Button>
-                            <BsTrash />
-                          </Button>
+                          <BsTrash />
                         </span>
-                      </button>
+                      </Button>
                     </CardFooter>
                   </Stack>
                 </Flex>
