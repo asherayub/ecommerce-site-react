@@ -3,12 +3,11 @@ import { CiMenuBurger } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
 import React from "react";
 import { Link } from "react-router-dom";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <Grid
-      bg={"blue.600"}
+      bg={"#000000"}
       color={"white"}
       p={"20px 10px"}
       gridTemplateColumns={"1fr 1fr"}
@@ -38,8 +37,8 @@ const Header = () => {
             height: "100vh",
             backdropFilter: "blur(10px)",
             padding: "10px 0",
-            backgroundColor: "#2e507799",
-            boxShadow: "2px 2px 10px #2e507799",
+            backgroundColor: "#00000099",
+            boxShadow: "2px 2px 10px #00000099",
             display: `${isMenuOpen ? "flex" : "none"}}`,
           },
         }}
